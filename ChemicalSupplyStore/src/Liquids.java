@@ -1,24 +1,22 @@
-public final class Liquids extends Goods {
+public final class Liquids extends Good {
     
-    private final GoodsType goodsType = GoodsType.LIQUIDS;
-    private final GoodsColour goodsColour = GoodsColour.BLUE;
+    private final GoodType GoodsType = GoodType.LIQUIDS;
+    private final GoodColour GoodsColour = GoodColour.BLUE;
     private double volume;
     private String colour;
     private double density;
 
 
-    public Liquids(String name, double price, int amount, double volume, String colour, double density) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setVolume(volume);
-        setColour(colour);
-        setDensity(density);
-    }
 
-    @Override
+
+    public Liquids(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Volume=" + volume + " Colour = " + colour + " Density = " + density + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " Capacity = " + getCapacity() + " Price = " + getPrice();
     }
 
     public double getVolume() {
@@ -46,12 +44,12 @@ public final class Liquids extends Goods {
     }
     
     @Override
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
 }

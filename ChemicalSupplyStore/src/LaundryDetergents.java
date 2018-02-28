@@ -1,22 +1,21 @@
-public final class LaundryDetergents extends Goods {
+public final class LaundryDetergents extends Good {
     
-    private final GoodsType goodsType = GoodsType.LAUNDRY_DETERGENTS;
-    private final GoodsColour goodsColour = GoodsColour.RED;
+    private final GoodType GoodsType = GoodType.LAUNDRY_DETERGENTS;
+    private final GoodColour GoodsColour = GoodColour.RED;
     private double density;
     private double volume;
 
 
-    public LaundryDetergents(String name, double price, int amount, double density, double volume) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setDensity(density);
-        setVolume(volume);
-    }
 
-    @Override
+
+    public LaundryDetergents(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Density = " + density + " Volume=" + volume + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " Capacity = " + getCapacity() + " Price = " + getPrice();
     }
 
     public double getDensity() {
@@ -36,12 +35,12 @@ public final class LaundryDetergents extends Goods {
     }
     
     @Override
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public GoodType getGoodType() {
+        return GoodsType;
     }
      
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
 }

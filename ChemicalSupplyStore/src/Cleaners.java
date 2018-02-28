@@ -1,26 +1,27 @@
-public final class Cleaners extends Goods {
+public final class Cleaners extends Good {
     
-    private final GoodsType goodsType = GoodsType.CLEANERS;
-    private final GoodsColour goodsColour = GoodsColour.WHITE;
+    private final GoodType GoodsType = GoodType.CLEANERS;
+    private final GoodColour GoodsColour = GoodColour.WHITE;
     
-    public Cleaners(String name, double price,int amount) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        }
 
-    @Override
+
+    public Cleaners(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " Capacity = " + getCapacity() + " Price = " + getPrice();
     }
     
     @Override
-     public GoodsType getGoodsType() {
-        return goodsType;
+     public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
 }

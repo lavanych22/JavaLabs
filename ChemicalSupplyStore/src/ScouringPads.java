@@ -1,22 +1,21 @@
-public final class ScouringPads extends Goods {
+public final class ScouringPads extends Good {
     
-    private final GoodsType goodsType = GoodsType.SCOURING_PADS;
-    private final GoodsColour goodsColour = GoodsColour.YELLOW;
+    private final GoodType GoodsType = GoodType.SCOURING_PADS;
+    private final GoodColour GoodsColour = GoodColour.YELLOW;
     private double rigidity;
     private String colour;
 
 
-    public ScouringPads(String name, double price, int amount, double rigidity, String colour) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setRigidity(rigidity);
-        setColour(colour);
-    }
 
-    @Override
+
+    public ScouringPads(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Rigidity = " + rigidity + " Colour = " + colour + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " Capacity = " + getCapacity() + " Price = " + getPrice();
     }
 
     public double getRigidity() {
@@ -36,12 +35,12 @@ public final class ScouringPads extends Goods {
     }
     
     @Override
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
 }

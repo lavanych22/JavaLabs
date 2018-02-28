@@ -1,26 +1,23 @@
-public final class AirFresheners extends Goods {
+public final class AirFresheners extends Good {
     
-    private final GoodsType goodsType = GoodsType.AIR_FRESHENERS;
-    private final GoodsColour goodsColour = GoodsColour.WHITE;
+    private final GoodType GoodsType = GoodType.AIR_FRESHENERS;
+    private final GoodColour GoodsColour = GoodColour.WHITE;
     private String smell;
     private double volume;
 
 
 
-    public AirFresheners(String name, double price,int amount, String smell, double volume) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setSmell(smell);
-        setVolume(volume);
-    }
-
     @Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Smell = " + smell + " Volume = " + volume + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " capacity = " + getCapacity() + " Price = " + getPrice();
     }
     
-    public String getSmell() {
+    public AirFresheners(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getSmell() {
         return smell;
     }
 
@@ -37,13 +34,13 @@ public final class AirFresheners extends Goods {
     }
     
     @Override
-     public GoodsType getGoodsType() {
-        return goodsType;
+     public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
     
 }

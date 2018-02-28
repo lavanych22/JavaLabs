@@ -1,22 +1,21 @@
-public final class InsectRepellents extends Goods {
+public final class InsectRepellents extends Good {
     
-    private final GoodsType goodsType = GoodsType.INSECT_REPELLENTS;
-    private final GoodsColour goodsColour = GoodsColour.WHITE;
+    private final GoodType GoodsType = GoodType.INSECT_REPELLENTS;
+    private final GoodColour GoodsColour = GoodColour.WHITE;
     private double killZoneRadius;
     private double volume;
 
 
-    public InsectRepellents(String name, double price, int amount, double killZoneRadius, double volume) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setKillZoneRadius(killZoneRadius);
-        setVolume(volume);
-    }
 
-    @Override
+
+    public InsectRepellents(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " KillZoneRadius = " + killZoneRadius + " Volume = " + volume + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour +  " capacity = " + getCapacity() + " Price = " + getPrice();
     }
 
     public double getKillZoneRadius() {
@@ -36,12 +35,12 @@ public final class InsectRepellents extends Goods {
     }
     
     @Override
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
 }

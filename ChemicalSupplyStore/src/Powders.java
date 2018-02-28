@@ -1,24 +1,22 @@
-public final class Powders extends Goods {
+public final class Powders extends Good {
     
-    private final GoodsType goodsType = GoodsType.POWDERS;
-    private final GoodsColour goodsColour = GoodsColour.BLACK;
+    private final GoodType GoodsType = GoodType.POWDERS;
+    private final GoodColour GoodsColour = GoodColour.BLACK;
     private String material;
     private double weight;
     private String colour;
 
 
-    public Powders(String name, double price, int amount, String material, double weight, String colour) {
-        setName(name);
-        setPrice(price);
-        setAmount(amount);
-        setMaterial(material);
-        setWeight(weight);
-        setColour(colour);
-    }
+ 
 
-    @Override
+    public Powders(String name, String manufacturer, double price, int capacity, String colour) {
+		super(name, manufacturer, price, capacity, colour);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
-        return "Name = " + name + " Type = " + goodsType + " Colour = " + goodsColour + " Material = " + material + " Weight = " + weight + " Colour = " + colour + " Amount = " + amount + " Price = " + price;
+        return "Name = " + getName() + " Type = " + GoodsType + " Colour = " + GoodsColour + " Capacity = " + getCapacity() + " Price = " + getPrice();
     }
 
     public String getMaterial() {
@@ -46,13 +44,13 @@ public final class Powders extends Goods {
     }
     
     @Override
-    public GoodsType getGoodsType() {
-        return goodsType;
+    public GoodType getGoodType() {
+        return GoodsType;
     }
     
     @Override
-    public GoodsColour getGoodsColour() {
-        return goodsColour;
+    public GoodColour getGoodColour() {
+        return GoodsColour;
     }
     
 }
