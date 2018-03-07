@@ -1,0 +1,12 @@
+Customer.class
+goods\insectrepellents\InsectRepellents.class
+goods\Goods.class
+goods\GoodsColour.class
+goods\GoodsType.class
+goods\cleaners\Cleaners.class
+goods\liquids\Liquids.class
+ChemicalSupplyStore.class
+goods\scouringpads\ScouringPads.class
+goods\airfresheners\AirFresheners.class
+goods\laundrydetergents\LaundryDetergents.class
+goods\powders\Powders.class

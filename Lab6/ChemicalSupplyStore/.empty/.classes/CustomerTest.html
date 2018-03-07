@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomerTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomerTest (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/ 20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    94.7%
+  </span>
+  <span class="absValue">
+    (71/ 75)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertEquals;
+<i>2</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertFalse;
+<i>3</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertThrows;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import org.junit.jupiter.api.AfterEach;
+<i>6</i>&nbsp;import org.junit.jupiter.api.BeforeEach;
+<i>7</i>&nbsp;import org.junit.jupiter.api.DisplayName;
+<i>8</i>&nbsp;import org.junit.jupiter.api.Test;
+<i>9</i>&nbsp;import org.junit.platform.runner.JUnitPlatform;
+<i>10</i>&nbsp;import org.junit.platform.suite.api.IncludeEngines;
+<i>11</i>&nbsp;import org.junit.runner.RunWith;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.lang.reflect.Field;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;@RunWith(JUnitPlatform.class)
+<i>16</i>&nbsp;@IncludeEngines(&quot;junit-jupiter&quot;)
+<b class="fc"><i>17</i>&nbsp;public class CustomerTest {</b>
+<i>18</i>&nbsp;    private Customer customer;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    @BeforeEach
+<i>21</i>&nbsp;    void init() {
+<b class="fc"><i>22</i>&nbsp;        customer = new Customer(&quot;Ihor&quot;, &quot;Pankiv&quot;, 5, 1);</b>
+<b class="fc"><i>23</i>&nbsp;    }</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Test
+<i>26</i>&nbsp;    public void testGetterCustomerWithValidName() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>27</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;name&quot;);</b>
+<b class="fc"><i>28</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>29</i>&nbsp;        field.set(customer, &quot;Roman&quot;);</b>
+<b class="fc"><i>30</i>&nbsp;        final String result = customer.getName();</b>
+<b class="fc"><i>31</i>&nbsp;        assertEquals(&quot;Roman&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;    }</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    @Test
+<i>35</i>&nbsp;    public void testSetterCustomerWithValidName() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>36</i>&nbsp;        String name = &quot;Taras&quot;;</b>
+<b class="fc"><i>37</i>&nbsp;        customer.setName(name);</b>
+<b class="fc"><i>38</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;name&quot;);</b>
+<b class="fc"><i>39</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>40</i>&nbsp;        assertEquals(&quot;Taras&quot;, field.get(customer), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    @DisplayName(&quot;Test Customer With Invalid Name&quot;)
+<i>44</i>&nbsp;    @Test
+<i>45</i>&nbsp;    public void testSetterCustomerWithInvalidName() {
+<b class="fc"><i>46</i>&nbsp;        String name = &quot;&quot;;</b>
+<b class="fc"><i>47</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc"><i>48</i>&nbsp;            customer.setName(name);</b>
+<b class="nc"><i>49</i>&nbsp;        });</b>
+<b class="fc"><i>50</i>&nbsp;    }</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    @Test
+<i>53</i>&nbsp;    public void testGetterCustomerWithValidSurname() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>54</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;surname&quot;);</b>
+<b class="fc"><i>55</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>56</i>&nbsp;        field.set(customer, &quot;Ivanenko&quot;);</b>
+<b class="fc"><i>57</i>&nbsp;        final String result = customer.getSurname();</b>
+<b class="fc"><i>58</i>&nbsp;        assertEquals(&quot;Ivanenko&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    @Test
+<i>62</i>&nbsp;    public void testSetterCustomerWithValidSurname() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>63</i>&nbsp;        String surname = &quot;Ivanenko&quot;;</b>
+<b class="fc"><i>64</i>&nbsp;        customer.setSurname(surname);</b>
+<b class="fc"><i>65</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;surname&quot;);</b>
+<b class="fc"><i>66</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>67</i>&nbsp;        assertEquals(&quot;Ivanenko&quot;, field.get(customer), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>68</i>&nbsp;    }</b>
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    @DisplayName(&quot;Test Customer With Invalid Surname&quot;)
+<i>71</i>&nbsp;    @Test
+<i>72</i>&nbsp;    public void testSetterCustomerWithInvalidSurname() {
+<b class="fc"><i>73</i>&nbsp;        String surname = &quot;&quot;;</b>
+<b class="fc"><i>74</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc"><i>75</i>&nbsp;            customer.setSurname(surname);</b>
+<b class="nc"><i>76</i>&nbsp;        });</b>
+<b class="fc"><i>77</i>&nbsp;    }</b>
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    @Test
+<i>80</i>&nbsp;    public void testGetterCustomerWithValidAmountOfMoney() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>81</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;availableAmountOfMoney&quot;);</b>
+<b class="fc"><i>82</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>83</i>&nbsp;        field.set(customer, 10.5);</b>
+<b class="fc"><i>84</i>&nbsp;        final double result = customer.getAvailableAmountOfMoney();</b>
+<b class="fc"><i>85</i>&nbsp;        assertEquals(10.5, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>86</i>&nbsp;    }</b>
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    @Test
+<i>89</i>&nbsp;    public void testSetterCustomerWithValidAmountOfMoney() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>90</i>&nbsp;        double availableAmountOfMoney = 10.5;</b>
+<b class="fc"><i>91</i>&nbsp;        customer.setAvailableAmountOfMoney(availableAmountOfMoney);</b>
+<b class="fc"><i>92</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;availableAmountOfMoney&quot;);</b>
+<b class="fc"><i>93</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>94</i>&nbsp;        assertEquals(10.5, field.get(customer), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>95</i>&nbsp;    }</b>
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    @DisplayName(&quot;Test Customer With Invalid Amount Of Money&quot;)
+<i>98</i>&nbsp;    @Test
+<i>99</i>&nbsp;    public void testSetterCustomerWithInvalidAmountOfMoney() {
+<b class="fc"><i>100</i>&nbsp;        double availableAmountOfMoney = -100.0;</b>
+<b class="fc"><i>101</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc"><i>102</i>&nbsp;            customer.setAvailableAmountOfMoney(availableAmountOfMoney);</b>
+<b class="nc"><i>103</i>&nbsp;        });</b>
+<b class="fc"><i>104</i>&nbsp;    }</b>
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    @Test
+<i>107</i>&nbsp;    public void testGetterCustomerWithValidNumberOfNecessaryGoods() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>108</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;numberOfNecessaryGoods&quot;);</b>
+<b class="fc"><i>109</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>110</i>&nbsp;        field.set(customer, 5);</b>
+<b class="fc"><i>111</i>&nbsp;        final int result = customer.getNumberOfNecessaryGoods();</b>
+<b class="fc"><i>112</i>&nbsp;        assertEquals(5, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>113</i>&nbsp;    }</b>
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    @Test
+<i>116</i>&nbsp;    public void testSetterCustomerWithValidNumberOfNecessaryGoods() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>117</i>&nbsp;        int numberOfNecessaryGoods = 5;</b>
+<b class="fc"><i>118</i>&nbsp;        customer.setNumberOfNecessaryGoods(numberOfNecessaryGoods);</b>
+<b class="fc"><i>119</i>&nbsp;        final Field field = customer.getClass().getDeclaredField(&quot;numberOfNecessaryGoods&quot;);</b>
+<b class="fc"><i>120</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>121</i>&nbsp;        assertEquals(5, field.get(customer), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>122</i>&nbsp;    }</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    @DisplayName(&quot;Test Customer With Invalid Number Of Necessary Goods&quot;)
+<i>125</i>&nbsp;    @Test
+<i>126</i>&nbsp;    public void testSetterCustomerWithInvalidNumberOfNecessaryGoods() {
+<b class="fc"><i>127</i>&nbsp;        int numberOfNecessaryGoods = -10;</b>
+<b class="fc"><i>128</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc"><i>129</i>&nbsp;            customer.setNumberOfNecessaryGoods(numberOfNecessaryGoods);</b>
+<b class="nc"><i>130</i>&nbsp;        });</b>
+<b class="fc"><i>131</i>&nbsp;    }</b>
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    @Test
+<i>134</i>&nbsp;    public final void testToString() {
+<b class="fc"><i>135</i>&nbsp;        assertFalse(customer.toString().contains(&quot;@&quot;));</b>
+<b class="fc"><i>136</i>&nbsp;    }</b>
+<i>137</i>&nbsp;
+<i>138</i>&nbsp;    @AfterEach
+<i>139</i>&nbsp;    void tearDown() {
+<b class="fc"><i>140</i>&nbsp;        customer = null;</b>
+<b class="fc"><i>141</i>&nbsp;    }</b>
+<i>142</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-03-07 10:00</div>
+</div>
+</body>
+</html>
