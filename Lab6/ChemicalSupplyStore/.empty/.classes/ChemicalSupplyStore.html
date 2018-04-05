@@ -50,18 +50,18 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    89.5%
   </span>
   <span class="absValue">
-    (19/ 19)
+    (17/ 19)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    81.6%
   </span>
   <span class="absValue">
-    (49/ 49)
+    (40/ 49)
   </span>
 </td>
 </tr>
@@ -96,10 +96,10 @@
 <b class="fc"><i>22</i>&nbsp;    }</b>
 <i>23</i>&nbsp;
 <i>24</i>&nbsp;    public static void printList(final List&lt;Goods&gt; list) {
-<b class="fc"><i>25</i>&nbsp;        list.forEach((Goods x) -&gt; {</b>
-<b class="fc"><i>26</i>&nbsp;            System.out.println(x.toString());</b>
-<b class="fc"><i>27</i>&nbsp;        });</b>
-<b class="fc"><i>28</i>&nbsp;    }</b>
+<b class="nc"><i>25</i>&nbsp;        list.forEach((Goods x) -&gt; {</b>
+<b class="nc"><i>26</i>&nbsp;            System.out.println(x.toString());</b>
+<b class="nc"><i>27</i>&nbsp;        });</b>
+<b class="nc"><i>28</i>&nbsp;    }</b>
 <i>29</i>&nbsp;
 <i>30</i>&nbsp;
 <i>31</i>&nbsp;    @Override
@@ -111,7 +111,7 @@
 <i>37</i>&nbsp;    public void sortByPrice(final List&lt;Goods&gt; result) {
 <b class="fc"><i>38</i>&nbsp;        result.sort((Goods t1, Goods t2) -&gt; {</b>
 <b class="fc"><i>39</i>&nbsp;            if ((t1.getPrice() - t2.getPrice()) &gt;= 0) {</b>
-<b class="fc"><i>40</i>&nbsp;                return 1;</b>
+<b class="nc"><i>40</i>&nbsp;                return 1;</b>
 <b class="fc"><i>41</i>&nbsp;            } else return -1;</b>
 <i>42</i>&nbsp;        });
 <b class="fc"><i>43</i>&nbsp;    }</b>
@@ -132,7 +132,7 @@
 <i>58</i>&nbsp;
 <i>59</i>&nbsp;    public void setStoreName(final String storeName) {
 <b class="fc"><i>60</i>&nbsp;        if (storeName.equals(&quot;&quot;)) {</b>
-<b class="fc"><i>61</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
 <i>62</i>&nbsp;        }
 <b class="fc"><i>63</i>&nbsp;        this.storeName = storeName;</b>
 <b class="fc"><i>64</i>&nbsp;    }</b>
@@ -143,7 +143,7 @@
 <i>69</i>&nbsp;
 <i>70</i>&nbsp;    public void setAddress(final String address) {
 <b class="fc"><i>71</i>&nbsp;        if (address.equals(&quot;&quot;)) {</b>
-<b class="fc"><i>72</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
+<b class="nc"><i>72</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
 <i>73</i>&nbsp;        }
 <b class="fc"><i>74</i>&nbsp;        this.address = address;</b>
 <b class="fc"><i>75</i>&nbsp;    }</b>
@@ -154,7 +154,7 @@
 <i>80</i>&nbsp;
 <i>81</i>&nbsp;    public void setGoodsAmount(final int goodsAmount) {
 <b class="fc"><i>82</i>&nbsp;        if (goodsAmount &lt; 0) {</b>
-<b class="fc"><i>83</i>&nbsp;            throw new IllegalArgumentException(&quot;Negative number is invalid.&quot;);</b>
+<b class="nc"><i>83</i>&nbsp;            throw new IllegalArgumentException(&quot;Negative number is invalid.&quot;);</b>
 <i>84</i>&nbsp;        }
 <b class="fc"><i>85</i>&nbsp;        this.goodsAmount = goodsAmount;</b>
 <b class="fc"><i>86</i>&nbsp;    }</b>
@@ -165,7 +165,7 @@
 <i>91</i>&nbsp;
 <i>92</i>&nbsp;    public void setWorkingHours(final String workingHours) {
 <b class="fc"><i>93</i>&nbsp;        if (workingHours.equals(&quot;&quot;)) {</b>
-<b class="fc"><i>94</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
+<b class="nc"><i>94</i>&nbsp;            throw new IllegalArgumentException(&quot;Empty string is invalid.&quot;);</b>
 <i>95</i>&nbsp;        }
 <b class="fc"><i>96</i>&nbsp;        this.workingHours = workingHours;</b>
 <b class="fc"><i>97</i>&nbsp;    }</b>
@@ -187,7 +187,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-03-07 10:00</div>
+    <div style="float:right;">generated on 2018-03-15 14:20</div>
 </div>
 </body>
 </html>

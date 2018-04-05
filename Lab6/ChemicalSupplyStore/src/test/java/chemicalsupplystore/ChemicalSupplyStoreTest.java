@@ -10,7 +10,6 @@ import goods.powders.Powders;
 import goods.scouringpads.ScouringPads;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.IncludeEngines;
@@ -21,23 +20,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @RunWith(JUnitPlatform.class)
 @IncludeEngines("junit-jupiter")
 public class ChemicalSupplyStoreTest {
-    private ChemicalSupplyStore chemicalSupplyStore;
+    private ChemicalSupplyStore koshyk = new ChemicalSupplyStore("koshyk", "Lviv", 10, "from 9 to 21");;;
 
     @BeforeEach
     void init() {
-
-        chemicalSupplyStore = new ChemicalSupplyStore("Epicenter", "Lviv", 5, "from 9 to 15");
-        Customer taras = new Customer("Taras", "Gag", 100.5, 10);
-        taras.toString();
-
-        ChemicalSupplyStore koshyk = new ChemicalSupplyStore("koshyk", "Lviv", 10, "from 9 to 21");
-        koshyk.toString();
-
         koshyk.addGoods(new AirFresheners("Air Fresh Matic", 4.2, 5, "Fu", 10.0));
         koshyk.addGoods(new AirFresheners("Persik", 3.2, 15, "Otpad", 11.0));
         koshyk.addGoods(new AirFresheners("Yabko", 4.0, 10, "Nyam-nyam", 12.0));
@@ -56,125 +48,69 @@ public class ChemicalSupplyStoreTest {
         koshyk.addGoods(new Powders("Tide", 3.6, 4, "Polyphosphoric acid", 10.9, "White"));
         koshyk.addGoods(new ScouringPads("Kuhovarochka", 6.6, 3, 3.6, "Green"));
         koshyk.addGoods(new ScouringPads("Gospodarochka", 7.6, 4, 4.6, "Yellow"));
-
-        System.out.println("\nAvailable goods \n");
-        ChemicalSupplyStore.printList(koshyk.getGoodsList());
-
-        System.out.println("\nAirFresheners:\n");
-        List<Goods> result1 = koshyk.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);
-        ChemicalSupplyStore.printList(result1);
-
-        System.out.println("\nSorted list:\n");
-        koshyk.sortByPrice(result1);
-        ChemicalSupplyStore.printList(result1);
     }
+
 
     @Test
     public void testGetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("storeName");
-        field.setAccessible(true);
-        field.set(chemicalSupplyStore, "Epicenter");
-        final String result = chemicalSupplyStore.getStoreName();
+        koshyk.setStoreName("Epicenter");
+        final String result = koshyk.getStoreName();
         assertEquals("Epicenter", result, "Fields don't match");
     }
 
     @Test
     public void testSetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
         String storeName = "Intermarket";
-        chemicalSupplyStore.setStoreName(storeName);
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("storeName");
-        field.setAccessible(true);
-        assertEquals("Intermarket", field.get(chemicalSupplyStore), "Fields don't match");
-    }
-
-    @DisplayName("Test Goods With Invalid Store Name")
-    @Test
-    public void testSetterGoodsWithInvalidStoreName() {
-        String storeName = "";
-        assertThrows(IllegalArgumentException.class, () -> {
-            chemicalSupplyStore.setStoreName(storeName);
-        });
+        koshyk.setStoreName(storeName);
+        assertEquals("Intermarket", field.get(koshyk), "Fields don't match");
     }
 
     @Test
     public void testGetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("address");
-        field.setAccessible(true);
-        field.set(chemicalSupplyStore, "Lviv");
-        final String result = chemicalSupplyStore.getAddress();
+        field.set(koshyk, "Lviv");
+        final String result = koshyk.getAddress();
         assertEquals("Lviv", result, "Fields don't match");
     }
 
     @Test
     public void testSetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
         String address = "Lviv";
-        chemicalSupplyStore.setAddress(address);
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("address");
-        field.setAccessible(true);
-        assertEquals("Lviv", field.get(chemicalSupplyStore), "Fields don't match");
-    }
-
-    @DisplayName("Test Goods With Invalid Address")
-    @Test
-    public void testSetterGoodsWithInvalidAddress() {
-        String address = "";
-        assertThrows(IllegalArgumentException.class, () -> {
-            chemicalSupplyStore.setAddress(address);
-        });
+        koshyk.setAddress(address);
+        assertEquals("Lviv", field.get(koshyk), "Fields don't match");
     }
 
     @Test
     public void testGetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("goodsAmount");
-        field.setAccessible(true);
-        field.set(chemicalSupplyStore, 5);
-        final int result = chemicalSupplyStore.getGoodsAmount();
+        koshyk.setGoodsAmount(5);
+        final int result = koshyk.getGoodsAmount();
         assertEquals(5, result, "Fields don't match");
     }
 
     @Test
     public void testSetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
         int goodsAmount = 5;
-        chemicalSupplyStore.setGoodsAmount(goodsAmount);
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("goodsAmount");
+        koshyk.setGoodsAmount(goodsAmount);
+        final Field field = koshyk.getClass().getDeclaredField("goodsAmount");
         field.setAccessible(true);
-        assertEquals(5, field.get(chemicalSupplyStore), "Fields don't match");
-    }
-
-    @DisplayName("Test Goods With Invalid Goods Amount")
-    @Test
-    public void testSetterGoodsWithInvalidGoodsAmount() {
-        int goodsAmount = -10;
-        assertThrows(IllegalArgumentException.class, () -> {
-            chemicalSupplyStore.setGoodsAmount(goodsAmount);
-        });
+        assertEquals(5, field.get(koshyk), "Fields don't match");
     }
 
     @Test
     public void testGetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("workingHours");
+        final Field field = koshyk.getClass().getDeclaredField("workingHours");
         field.setAccessible(true);
-        field.set(chemicalSupplyStore, "9-15");
-        final String result = chemicalSupplyStore.getWorkingHours();
+        field.set(koshyk, "9-15");
+        final String result = koshyk.getWorkingHours();
         assertEquals("9-15", result, "Fields don't match");
     }
 
     @Test
     public void testSetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
         String workingHours = "9-15";
-        chemicalSupplyStore.setWorkingHours(workingHours);
-        final Field field = chemicalSupplyStore.getClass().getDeclaredField("workingHours");
+        koshyk.setWorkingHours(workingHours);
+        final Field field = koshyk.getClass().getDeclaredField("workingHours");
         field.setAccessible(true);
-        assertEquals("9-15", field.get(chemicalSupplyStore), "Fields don't match");
-    }
-
-    @DisplayName("Test Goods With Invalid Working Hours")
-    @Test
-    public void testSetterGoodsWithInvalidWorkingHours() {
-        String workingHours = "";
-        assertThrows(IllegalArgumentException.class, () -> {
-            chemicalSupplyStore.setWorkingHours(workingHours);
-        });
+        assertEquals("9-15", field.get(koshyk), "Fields don't match");
     }
 
     @Test
@@ -186,49 +122,38 @@ public class ChemicalSupplyStoreTest {
     }
 
     @Test
-    public void testPrintList() {
-        List<Goods> goodsList = new LinkedList<>();
-        ChemicalSupplyStore.printList(goodsList);
-        String expected = "";
-        assertEquals(expected,"","Fields don't match");
-    }
-
-    @Test
     public final void testGeneralToString() {
-        ChemicalSupplyStore koshyk = new ChemicalSupplyStore("koshyk", "Lviv", 10, "from 9 to 21");
         assertFalse(koshyk.toString().contains("@"));
     }
 
     @Test
-    public void testGeneralAddGoods() {
-        ChemicalSupplyStore chemicalSupplyStore = new ChemicalSupplyStore("Epicenter", "Lviv", 5, "from 9 to 15");
-        List<Goods> goodsList = new LinkedList<>();
-        assertTrue(goodsList.isEmpty());
-        chemicalSupplyStore.addGoods(new AirFresheners("Airic", 10.5, 5, "Nice", 0.5));
-        assertTrue(goodsList.isEmpty());
+    public void testFindByType() {
+        ChemicalSupplyStore kuh = new ChemicalSupplyStore("kuh", "kuiv", 5, "9-11");
+        AirFresheners air1 = new AirFresheners("Airic", 5.0, 4, "Nice", 8.5);
+        AirFresheners air2 = new AirFresheners("Pikka", 4.0, 5, "Good", 8.5);
+        kuh.addGoods(air1);
+        kuh.addGoods(air2);
+        List<Goods> result1 = kuh.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);
+        assertEquals(air1, result1.get(0), "Price doesn't match");
     }
 
     @Test
     public void testSortByPrice() {
-        ChemicalSupplyStore lol = new ChemicalSupplyStore("koshyk", "Lviv", 10, "from 9 to 21");
-        lol.addGoods(new AirFresheners("Yabko", 4.0, 10, "Nyam-nyam", 12.0));
-        lol.addGoods(new AirFresheners("Persik", 3.2, 15, "Otpad", 11.0));
+        ChemicalSupplyStore kuh = new ChemicalSupplyStore("fa", "lviv", 5, "9-15");
+        AirFresheners air1 = new AirFresheners("Airic", 5.0, 4, "Nice", 8.5);
+        AirFresheners air2 = new AirFresheners("Pikka", 4.0, 5, "Good", 8.5);
+        kuh.addGoods(air1);
+        kuh.addGoods(air2);
         List<Goods> result1;
-        result1 = lol.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);
-        ChemicalSupplyStore.printList(result1);
-        List<Goods> result2 = lol.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);
-        lol.sortByPrice(result2);
-        ChemicalSupplyStore.printList(result2);
+        result1 = kuh.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.BLACK);
+        List<Goods> result2 = kuh.findByGroup(GoodsType.AIR_FRESHENERS,GoodsColour.BLACK);
+        kuh.sortByPrice(result2);
         assertEquals(result1.get(0), result2.get(1), "Price doesn't match");
     }
 
-    @Test
-    public final void testToString() {
-        assertFalse(chemicalSupplyStore.toString().contains("@"));
-    }
 
     @AfterEach
     void tearDown() {
-        chemicalSupplyStore = null;
+        koshyk = null;
     }
 }

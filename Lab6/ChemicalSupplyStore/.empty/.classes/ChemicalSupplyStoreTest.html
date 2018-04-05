@@ -53,15 +53,15 @@
     100%
   </span>
   <span class="absValue">
-    (25/ 25)
+    (15/ 15)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    97%
+    100%
   </span>
   <span class="absValue">
-    (130/ 134)
+    (96/ 96)
   </span>
 </td>
 </tr>
@@ -84,234 +84,169 @@
 <i>10</i>&nbsp;import goods.scouringpads.ScouringPads;
 <i>11</i>&nbsp;import org.junit.jupiter.api.AfterEach;
 <i>12</i>&nbsp;import org.junit.jupiter.api.BeforeEach;
-<i>13</i>&nbsp;import org.junit.jupiter.api.DisplayName;
-<i>14</i>&nbsp;import org.junit.jupiter.api.Test;
-<i>15</i>&nbsp;import org.junit.platform.runner.JUnitPlatform;
-<i>16</i>&nbsp;import org.junit.platform.suite.api.IncludeEngines;
-<i>17</i>&nbsp;import org.junit.runner.RunWith;
-<i>18</i>&nbsp;
-<i>19</i>&nbsp;import java.lang.reflect.Field;
-<i>20</i>&nbsp;import java.util.LinkedList;
-<i>21</i>&nbsp;import java.util.List;
-<i>22</i>&nbsp;
-<i>23</i>&nbsp;import static org.junit.Assert.assertTrue;
-<i>24</i>&nbsp;import static org.junit.jupiter.api.Assertions.*;
+<i>13</i>&nbsp;import org.junit.jupiter.api.Test;
+<i>14</i>&nbsp;import org.junit.platform.runner.JUnitPlatform;
+<i>15</i>&nbsp;import org.junit.platform.suite.api.IncludeEngines;
+<i>16</i>&nbsp;import org.junit.runner.RunWith;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import java.lang.reflect.Field;
+<i>19</i>&nbsp;import java.util.LinkedList;
+<i>20</i>&nbsp;import java.util.List;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;import static org.junit.Assert.assertTrue;
+<i>23</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertEquals;
+<i>24</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertFalse;
 <i>25</i>&nbsp;
 <i>26</i>&nbsp;@RunWith(JUnitPlatform.class)
 <i>27</i>&nbsp;@IncludeEngines(&quot;junit-jupiter&quot;)
 <b class="fc"><i>28</i>&nbsp;public class ChemicalSupplyStoreTest {</b>
-<i>29</i>&nbsp;    private ChemicalSupplyStore chemicalSupplyStore;
+<b class="fc"><i>29</i>&nbsp;    private ChemicalSupplyStore koshyk = new ChemicalSupplyStore(&quot;koshyk&quot;, &quot;Lviv&quot;, 10, &quot;from 9 to 21&quot;);;;</b>
 <i>30</i>&nbsp;
 <i>31</i>&nbsp;    @BeforeEach
 <i>32</i>&nbsp;    void init() {
-<i>33</i>&nbsp;
-<b class="fc"><i>34</i>&nbsp;        chemicalSupplyStore = new ChemicalSupplyStore(&quot;Epicenter&quot;, &quot;Lviv&quot;, 5, &quot;from 9 to 15&quot;);</b>
-<b class="fc"><i>35</i>&nbsp;        Customer taras = new Customer(&quot;Taras&quot;, &quot;Gag&quot;, 100.5, 10);</b>
-<b class="fc"><i>36</i>&nbsp;        taras.toString();</b>
-<i>37</i>&nbsp;
-<b class="fc"><i>38</i>&nbsp;        ChemicalSupplyStore koshyk = new ChemicalSupplyStore(&quot;koshyk&quot;, &quot;Lviv&quot;, 10, &quot;from 9 to 21&quot;);</b>
-<b class="fc"><i>39</i>&nbsp;        koshyk.toString();</b>
-<i>40</i>&nbsp;
-<b class="fc"><i>41</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Air Fresh Matic&quot;, 4.2, 5, &quot;Fu&quot;, 10.0));</b>
-<b class="fc"><i>42</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Persik&quot;, 3.2, 15, &quot;Otpad&quot;, 11.0));</b>
-<b class="fc"><i>43</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Yabko&quot;, 4.0, 10, &quot;Nyam-nyam&quot;, 12.0));</b>
-<b class="fc"><i>44</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Kitchen&quot;, 5.2, 3));</b>
-<b class="fc"><i>45</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Floor&quot;, 2.2, 7));</b>
-<b class="fc"><i>46</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Bathroom&quot;, 7.2, 6));</b>
-<b class="fc"><i>47</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Polirol&#39;&quot;, 4.3, 9));</b>
-<b class="fc"><i>48</i>&nbsp;        koshyk.addGoods(new LaundryDetergents(&quot;Fairy&quot;, 5.3, 3, 5.0, 10.0));</b>
-<b class="fc"><i>49</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Fairy&quot;, 5.3, 3, 5.0, &quot;White&quot;, 10.0));</b>
-<b class="fc"><i>50</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Perwoll&quot;, 8.3, 7, 4.0, &quot;Pink&quot;, 11.0));</b>
-<b class="fc"><i>51</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Persil&quot;, 10.3, 7, 7.0, &quot;Black&quot;, 21.0));</b>
-<b class="fc"><i>52</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-comar&quot;, 4.0, 0, 8.3, 4.0));</b>
-<b class="fc"><i>53</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-bee&quot;, 11.0, 2, 3.3, 4.5));</b>
-<b class="fc"><i>54</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-fly&quot;, 10.0, 4, 3.7, 8.5));</b>
-<b class="fc"><i>55</i>&nbsp;        koshyk.addGoods(new Powders(&quot;Calgon&quot;, 5.6, 2, &quot;Sodium triphosphate&quot;, 10.0, &quot;Multi-coloured&quot;));</b>
-<b class="fc"><i>56</i>&nbsp;        koshyk.addGoods(new Powders(&quot;Tide&quot;, 3.6, 4, &quot;Polyphosphoric acid&quot;, 10.9, &quot;White&quot;));</b>
-<b class="fc"><i>57</i>&nbsp;        koshyk.addGoods(new ScouringPads(&quot;Kuhovarochka&quot;, 6.6, 3, 3.6, &quot;Green&quot;));</b>
-<b class="fc"><i>58</i>&nbsp;        koshyk.addGoods(new ScouringPads(&quot;Gospodarochka&quot;, 7.6, 4, 4.6, &quot;Yellow&quot;));</b>
-<i>59</i>&nbsp;
-<b class="fc"><i>60</i>&nbsp;        System.out.println(&quot;\nAvailable goods \n&quot;);</b>
-<b class="fc"><i>61</i>&nbsp;        ChemicalSupplyStore.printList(koshyk.getGoodsList());</b>
-<i>62</i>&nbsp;
-<b class="fc"><i>63</i>&nbsp;        System.out.println(&quot;\nAirFresheners:\n&quot;);</b>
-<b class="fc"><i>64</i>&nbsp;        List&lt;Goods&gt; result1 = koshyk.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);</b>
-<b class="fc"><i>65</i>&nbsp;        ChemicalSupplyStore.printList(result1);</b>
-<i>66</i>&nbsp;
-<b class="fc"><i>67</i>&nbsp;        System.out.println(&quot;\nSorted list:\n&quot;);</b>
-<b class="fc"><i>68</i>&nbsp;        koshyk.sortByPrice(result1);</b>
-<b class="fc"><i>69</i>&nbsp;        ChemicalSupplyStore.printList(result1);</b>
-<b class="fc"><i>70</i>&nbsp;    }</b>
-<i>71</i>&nbsp;
-<i>72</i>&nbsp;    @Test
-<i>73</i>&nbsp;    public void testGetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>74</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;storeName&quot;);</b>
-<b class="fc"><i>75</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>76</i>&nbsp;        field.set(chemicalSupplyStore, &quot;Epicenter&quot;);</b>
-<b class="fc"><i>77</i>&nbsp;        final String result = chemicalSupplyStore.getStoreName();</b>
-<b class="fc"><i>78</i>&nbsp;        assertEquals(&quot;Epicenter&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>79</i>&nbsp;    }</b>
-<i>80</i>&nbsp;
-<i>81</i>&nbsp;    @Test
-<i>82</i>&nbsp;    public void testSetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>83</i>&nbsp;        String storeName = &quot;Intermarket&quot;;</b>
-<b class="fc"><i>84</i>&nbsp;        chemicalSupplyStore.setStoreName(storeName);</b>
-<b class="fc"><i>85</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;storeName&quot;);</b>
-<b class="fc"><i>86</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>87</i>&nbsp;        assertEquals(&quot;Intermarket&quot;, field.get(chemicalSupplyStore), &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>88</i>&nbsp;    }</b>
-<i>89</i>&nbsp;
-<i>90</i>&nbsp;    @DisplayName(&quot;Test Goods With Invalid Store Name&quot;)
-<i>91</i>&nbsp;    @Test
-<i>92</i>&nbsp;    public void testSetterGoodsWithInvalidStoreName() {
-<b class="fc"><i>93</i>&nbsp;        String storeName = &quot;&quot;;</b>
-<b class="fc"><i>94</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
-<b class="fc"><i>95</i>&nbsp;            chemicalSupplyStore.setStoreName(storeName);</b>
-<b class="nc"><i>96</i>&nbsp;        });</b>
-<b class="fc"><i>97</i>&nbsp;    }</b>
-<i>98</i>&nbsp;
-<i>99</i>&nbsp;    @Test
-<i>100</i>&nbsp;    public void testGetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>101</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;address&quot;);</b>
-<b class="fc"><i>102</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>103</i>&nbsp;        field.set(chemicalSupplyStore, &quot;Lviv&quot;);</b>
-<b class="fc"><i>104</i>&nbsp;        final String result = chemicalSupplyStore.getAddress();</b>
-<b class="fc"><i>105</i>&nbsp;        assertEquals(&quot;Lviv&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>106</i>&nbsp;    }</b>
-<i>107</i>&nbsp;
-<i>108</i>&nbsp;    @Test
-<i>109</i>&nbsp;    public void testSetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>110</i>&nbsp;        String address = &quot;Lviv&quot;;</b>
-<b class="fc"><i>111</i>&nbsp;        chemicalSupplyStore.setAddress(address);</b>
-<b class="fc"><i>112</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;address&quot;);</b>
-<b class="fc"><i>113</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>114</i>&nbsp;        assertEquals(&quot;Lviv&quot;, field.get(chemicalSupplyStore), &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>115</i>&nbsp;    }</b>
-<i>116</i>&nbsp;
-<i>117</i>&nbsp;    @DisplayName(&quot;Test Goods With Invalid Address&quot;)
-<i>118</i>&nbsp;    @Test
-<i>119</i>&nbsp;    public void testSetterGoodsWithInvalidAddress() {
-<b class="fc"><i>120</i>&nbsp;        String address = &quot;&quot;;</b>
-<b class="fc"><i>121</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
-<b class="fc"><i>122</i>&nbsp;            chemicalSupplyStore.setAddress(address);</b>
-<b class="nc"><i>123</i>&nbsp;        });</b>
-<b class="fc"><i>124</i>&nbsp;    }</b>
-<i>125</i>&nbsp;
-<i>126</i>&nbsp;    @Test
-<i>127</i>&nbsp;    public void testGetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>128</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;goodsAmount&quot;);</b>
-<b class="fc"><i>129</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>130</i>&nbsp;        field.set(chemicalSupplyStore, 5);</b>
-<b class="fc"><i>131</i>&nbsp;        final int result = chemicalSupplyStore.getGoodsAmount();</b>
-<b class="fc"><i>132</i>&nbsp;        assertEquals(5, result, &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>133</i>&nbsp;    }</b>
-<i>134</i>&nbsp;
-<i>135</i>&nbsp;    @Test
-<i>136</i>&nbsp;    public void testSetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>137</i>&nbsp;        int goodsAmount = 5;</b>
-<b class="fc"><i>138</i>&nbsp;        chemicalSupplyStore.setGoodsAmount(goodsAmount);</b>
-<b class="fc"><i>139</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;goodsAmount&quot;);</b>
-<b class="fc"><i>140</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>141</i>&nbsp;        assertEquals(5, field.get(chemicalSupplyStore), &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>142</i>&nbsp;    }</b>
-<i>143</i>&nbsp;
-<i>144</i>&nbsp;    @DisplayName(&quot;Test Goods With Invalid Goods Amount&quot;)
-<i>145</i>&nbsp;    @Test
-<i>146</i>&nbsp;    public void testSetterGoodsWithInvalidGoodsAmount() {
-<b class="fc"><i>147</i>&nbsp;        int goodsAmount = -10;</b>
-<b class="fc"><i>148</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
-<b class="fc"><i>149</i>&nbsp;            chemicalSupplyStore.setGoodsAmount(goodsAmount);</b>
-<b class="nc"><i>150</i>&nbsp;        });</b>
-<b class="fc"><i>151</i>&nbsp;    }</b>
-<i>152</i>&nbsp;
-<i>153</i>&nbsp;    @Test
-<i>154</i>&nbsp;    public void testGetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>155</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;workingHours&quot;);</b>
-<b class="fc"><i>156</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>157</i>&nbsp;        field.set(chemicalSupplyStore, &quot;9-15&quot;);</b>
-<b class="fc"><i>158</i>&nbsp;        final String result = chemicalSupplyStore.getWorkingHours();</b>
-<b class="fc"><i>159</i>&nbsp;        assertEquals(&quot;9-15&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>160</i>&nbsp;    }</b>
-<i>161</i>&nbsp;
-<i>162</i>&nbsp;    @Test
-<i>163</i>&nbsp;    public void testSetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
-<b class="fc"><i>164</i>&nbsp;        String workingHours = &quot;9-15&quot;;</b>
-<b class="fc"><i>165</i>&nbsp;        chemicalSupplyStore.setWorkingHours(workingHours);</b>
-<b class="fc"><i>166</i>&nbsp;        final Field field = chemicalSupplyStore.getClass().getDeclaredField(&quot;workingHours&quot;);</b>
-<b class="fc"><i>167</i>&nbsp;        field.setAccessible(true);</b>
-<b class="fc"><i>168</i>&nbsp;        assertEquals(&quot;9-15&quot;, field.get(chemicalSupplyStore), &quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>169</i>&nbsp;    }</b>
-<i>170</i>&nbsp;
-<i>171</i>&nbsp;    @DisplayName(&quot;Test Goods With Invalid Working Hours&quot;)
-<i>172</i>&nbsp;    @Test
-<i>173</i>&nbsp;    public void testSetterGoodsWithInvalidWorkingHours() {
-<b class="fc"><i>174</i>&nbsp;        String workingHours = &quot;&quot;;</b>
-<b class="fc"><i>175</i>&nbsp;        assertThrows(IllegalArgumentException.class, () -&gt; {</b>
-<b class="fc"><i>176</i>&nbsp;            chemicalSupplyStore.setWorkingHours(workingHours);</b>
-<b class="nc"><i>177</i>&nbsp;        });</b>
-<b class="fc"><i>178</i>&nbsp;    }</b>
-<i>179</i>&nbsp;
-<i>180</i>&nbsp;    @Test
-<i>181</i>&nbsp;    public void testAddGoods() {
-<b class="fc"><i>182</i>&nbsp;        ChemicalSupplyStore chemicalSupplyStore = new ChemicalSupplyStore(&quot;Epicenter&quot;, &quot;Lviv&quot;, 5, &quot;from 9 to 15&quot;);</b>
-<b class="fc"><i>183</i>&nbsp;        List&lt;Goods&gt; goodsList = new LinkedList&lt;&gt;();</b>
-<b class="fc"><i>184</i>&nbsp;        assertTrue(goodsList.isEmpty());</b>
-<b class="fc"><i>185</i>&nbsp;        chemicalSupplyStore.addGoods(new AirFresheners(&quot;Airic&quot;, 10.5, 5, &quot;Nice&quot;, 0.5));</b>
-<b class="fc"><i>186</i>&nbsp;    }</b>
-<i>187</i>&nbsp;
-<i>188</i>&nbsp;    @Test
-<i>189</i>&nbsp;    public void testPrintList() {
-<b class="fc"><i>190</i>&nbsp;        List&lt;Goods&gt; goodsList = new LinkedList&lt;&gt;();</b>
-<b class="fc"><i>191</i>&nbsp;        ChemicalSupplyStore.printList(goodsList);</b>
-<b class="fc"><i>192</i>&nbsp;        String expected = &quot;&quot;;</b>
-<b class="fc"><i>193</i>&nbsp;        assertEquals(expected,&quot;&quot;,&quot;Fields don&#39;t match&quot;);</b>
-<b class="fc"><i>194</i>&nbsp;    }</b>
-<i>195</i>&nbsp;
-<i>196</i>&nbsp;    @Test
-<i>197</i>&nbsp;    public final void testGeneralToString() {
-<b class="fc"><i>198</i>&nbsp;        ChemicalSupplyStore koshyk = new ChemicalSupplyStore(&quot;koshyk&quot;, &quot;Lviv&quot;, 10, &quot;from 9 to 21&quot;);</b>
-<b class="fc"><i>199</i>&nbsp;        assertFalse(koshyk.toString().contains(&quot;@&quot;));</b>
-<b class="fc"><i>200</i>&nbsp;    }</b>
-<i>201</i>&nbsp;
-<i>202</i>&nbsp;    @Test
-<i>203</i>&nbsp;    public void testGeneralAddGoods() {
-<b class="fc"><i>204</i>&nbsp;        ChemicalSupplyStore chemicalSupplyStore = new ChemicalSupplyStore(&quot;Epicenter&quot;, &quot;Lviv&quot;, 5, &quot;from 9 to 15&quot;);</b>
-<b class="fc"><i>205</i>&nbsp;        List&lt;Goods&gt; goodsList = new LinkedList&lt;&gt;();</b>
-<b class="fc"><i>206</i>&nbsp;        assertTrue(goodsList.isEmpty());</b>
-<b class="fc"><i>207</i>&nbsp;        chemicalSupplyStore.addGoods(new AirFresheners(&quot;Airic&quot;, 10.5, 5, &quot;Nice&quot;, 0.5));</b>
-<b class="fc"><i>208</i>&nbsp;        assertTrue(goodsList.isEmpty());</b>
-<b class="fc"><i>209</i>&nbsp;    }</b>
-<i>210</i>&nbsp;
-<i>211</i>&nbsp;    @Test
-<i>212</i>&nbsp;    public void testSortByPrice() {
-<b class="fc"><i>213</i>&nbsp;        ChemicalSupplyStore lol = new ChemicalSupplyStore(&quot;koshyk&quot;, &quot;Lviv&quot;, 10, &quot;from 9 to 21&quot;);</b>
-<b class="fc"><i>214</i>&nbsp;        lol.addGoods(new AirFresheners(&quot;Yabko&quot;, 4.0, 10, &quot;Nyam-nyam&quot;, 12.0));</b>
-<b class="fc"><i>215</i>&nbsp;        lol.addGoods(new AirFresheners(&quot;Persik&quot;, 3.2, 15, &quot;Otpad&quot;, 11.0));</b>
-<i>216</i>&nbsp;        List&lt;Goods&gt; result1;
-<b class="fc"><i>217</i>&nbsp;        result1 = lol.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);</b>
-<b class="fc"><i>218</i>&nbsp;        ChemicalSupplyStore.printList(result1);</b>
-<b class="fc"><i>219</i>&nbsp;        List&lt;Goods&gt; result2 = lol.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);</b>
-<b class="fc"><i>220</i>&nbsp;        lol.sortByPrice(result2);</b>
-<b class="fc"><i>221</i>&nbsp;        ChemicalSupplyStore.printList(result2);</b>
-<b class="fc"><i>222</i>&nbsp;        assertEquals(result1.get(0), result2.get(1), &quot;Price doesn&#39;t match&quot;);</b>
-<b class="fc"><i>223</i>&nbsp;    }</b>
-<i>224</i>&nbsp;
-<i>225</i>&nbsp;    @Test
-<i>226</i>&nbsp;    public final void testToString() {
-<b class="fc"><i>227</i>&nbsp;        assertFalse(chemicalSupplyStore.toString().contains(&quot;@&quot;));</b>
-<b class="fc"><i>228</i>&nbsp;    }</b>
-<i>229</i>&nbsp;
-<i>230</i>&nbsp;    @AfterEach
-<i>231</i>&nbsp;    void tearDown() {
-<b class="fc"><i>232</i>&nbsp;        chemicalSupplyStore = null;</b>
-<b class="fc"><i>233</i>&nbsp;    }</b>
-<i>234</i>&nbsp;}
+<b class="fc"><i>33</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Air Fresh Matic&quot;, 4.2, 5, &quot;Fu&quot;, 10.0));</b>
+<b class="fc"><i>34</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Persik&quot;, 3.2, 15, &quot;Otpad&quot;, 11.0));</b>
+<b class="fc"><i>35</i>&nbsp;        koshyk.addGoods(new AirFresheners(&quot;Yabko&quot;, 4.0, 10, &quot;Nyam-nyam&quot;, 12.0));</b>
+<b class="fc"><i>36</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Kitchen&quot;, 5.2, 3));</b>
+<b class="fc"><i>37</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Floor&quot;, 2.2, 7));</b>
+<b class="fc"><i>38</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Bathroom&quot;, 7.2, 6));</b>
+<b class="fc"><i>39</i>&nbsp;        koshyk.addGoods(new Cleaners(&quot;Polirol&#39;&quot;, 4.3, 9));</b>
+<b class="fc"><i>40</i>&nbsp;        koshyk.addGoods(new LaundryDetergents(&quot;Fairy&quot;, 5.3, 3, 5.0, 10.0));</b>
+<b class="fc"><i>41</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Fairy&quot;, 5.3, 3, 5.0, &quot;White&quot;, 10.0));</b>
+<b class="fc"><i>42</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Perwoll&quot;, 8.3, 7, 4.0, &quot;Pink&quot;, 11.0));</b>
+<b class="fc"><i>43</i>&nbsp;        koshyk.addGoods(new Liquids(&quot;Persil&quot;, 10.3, 7, 7.0, &quot;Black&quot;, 21.0));</b>
+<b class="fc"><i>44</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-comar&quot;, 4.0, 0, 8.3, 4.0));</b>
+<b class="fc"><i>45</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-bee&quot;, 11.0, 2, 3.3, 4.5));</b>
+<b class="fc"><i>46</i>&nbsp;        koshyk.addGoods(new InsectRepellents(&quot;Anti-fly&quot;, 10.0, 4, 3.7, 8.5));</b>
+<b class="fc"><i>47</i>&nbsp;        koshyk.addGoods(new Powders(&quot;Calgon&quot;, 5.6, 2, &quot;Sodium triphosphate&quot;, 10.0, &quot;Multi-coloured&quot;));</b>
+<b class="fc"><i>48</i>&nbsp;        koshyk.addGoods(new Powders(&quot;Tide&quot;, 3.6, 4, &quot;Polyphosphoric acid&quot;, 10.9, &quot;White&quot;));</b>
+<b class="fc"><i>49</i>&nbsp;        koshyk.addGoods(new ScouringPads(&quot;Kuhovarochka&quot;, 6.6, 3, 3.6, &quot;Green&quot;));</b>
+<b class="fc"><i>50</i>&nbsp;        koshyk.addGoods(new ScouringPads(&quot;Gospodarochka&quot;, 7.6, 4, 4.6, &quot;Yellow&quot;));</b>
+<b class="fc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    @Test
+<i>54</i>&nbsp;    public void testGetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>55</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;storeName&quot;);</b>
+<b class="fc"><i>56</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>57</i>&nbsp;        field.set(koshyk, &quot;Epicenter&quot;);</b>
+<b class="fc"><i>58</i>&nbsp;        final String result = koshyk.getStoreName();</b>
+<b class="fc"><i>59</i>&nbsp;        assertEquals(&quot;Epicenter&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    @Test
+<i>63</i>&nbsp;    public void testSetterGoodsWithValidStoreName() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>64</i>&nbsp;        String storeName = &quot;Intermarket&quot;;</b>
+<b class="fc"><i>65</i>&nbsp;        koshyk.setStoreName(storeName);</b>
+<b class="fc"><i>66</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;storeName&quot;);</b>
+<b class="fc"><i>67</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>68</i>&nbsp;        assertEquals(&quot;Intermarket&quot;, field.get(koshyk), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    @Test
+<i>72</i>&nbsp;    public void testGetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>73</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;address&quot;);</b>
+<b class="fc"><i>74</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>75</i>&nbsp;        field.set(koshyk, &quot;Lviv&quot;);</b>
+<b class="fc"><i>76</i>&nbsp;        final String result = koshyk.getAddress();</b>
+<b class="fc"><i>77</i>&nbsp;        assertEquals(&quot;Lviv&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;    }</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    @Test
+<i>81</i>&nbsp;    public void testSetterGoodsWithValidAddress() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>82</i>&nbsp;        String address = &quot;Lviv&quot;;</b>
+<b class="fc"><i>83</i>&nbsp;        koshyk.setAddress(address);</b>
+<b class="fc"><i>84</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;address&quot;);</b>
+<b class="fc"><i>85</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>86</i>&nbsp;        assertEquals(&quot;Lviv&quot;, field.get(koshyk), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>87</i>&nbsp;    }</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    @Test
+<i>90</i>&nbsp;    public void testGetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>91</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;goodsAmount&quot;);</b>
+<b class="fc"><i>92</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>93</i>&nbsp;        field.set(koshyk, 5);</b>
+<b class="fc"><i>94</i>&nbsp;        final int result = koshyk.getGoodsAmount();</b>
+<b class="fc"><i>95</i>&nbsp;        assertEquals(5, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>96</i>&nbsp;    }</b>
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;    @Test
+<i>99</i>&nbsp;    public void testSetterGoodsWithValidGoodsAmount() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>100</i>&nbsp;        int goodsAmount = 5;</b>
+<b class="fc"><i>101</i>&nbsp;        koshyk.setGoodsAmount(goodsAmount);</b>
+<b class="fc"><i>102</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;goodsAmount&quot;);</b>
+<b class="fc"><i>103</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>104</i>&nbsp;        assertEquals(5, field.get(koshyk), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>105</i>&nbsp;    }</b>
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    @Test
+<i>108</i>&nbsp;    public void testGetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>109</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;workingHours&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>111</i>&nbsp;        field.set(koshyk, &quot;9-15&quot;);</b>
+<b class="fc"><i>112</i>&nbsp;        final String result = koshyk.getWorkingHours();</b>
+<b class="fc"><i>113</i>&nbsp;        assertEquals(&quot;9-15&quot;, result, &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;    }</b>
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;    @Test
+<i>117</i>&nbsp;    public void testSetterGoodsWithValidWorkingHours() throws NoSuchFieldException, IllegalAccessException {
+<b class="fc"><i>118</i>&nbsp;        String workingHours = &quot;9-15&quot;;</b>
+<b class="fc"><i>119</i>&nbsp;        koshyk.setWorkingHours(workingHours);</b>
+<b class="fc"><i>120</i>&nbsp;        final Field field = koshyk.getClass().getDeclaredField(&quot;workingHours&quot;);</b>
+<b class="fc"><i>121</i>&nbsp;        field.setAccessible(true);</b>
+<b class="fc"><i>122</i>&nbsp;        assertEquals(&quot;9-15&quot;, field.get(koshyk), &quot;Fields don&#39;t match&quot;);</b>
+<b class="fc"><i>123</i>&nbsp;    }</b>
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    @Test
+<i>126</i>&nbsp;    public void testAddGoods() {
+<b class="fc"><i>127</i>&nbsp;        ChemicalSupplyStore chemicalSupplyStore = new ChemicalSupplyStore(&quot;Epicenter&quot;, &quot;Lviv&quot;, 5, &quot;from 9 to 15&quot;);</b>
+<b class="fc"><i>128</i>&nbsp;        List&lt;Goods&gt; goodsList = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>129</i>&nbsp;        assertTrue(goodsList.isEmpty());</b>
+<b class="fc"><i>130</i>&nbsp;        chemicalSupplyStore.addGoods(new AirFresheners(&quot;Airic&quot;, 10.5, 5, &quot;Nice&quot;, 0.5));</b>
+<b class="fc"><i>131</i>&nbsp;    }</b>
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    @Test
+<i>134</i>&nbsp;    public final void testGeneralToString() {
+<b class="fc"><i>135</i>&nbsp;        assertFalse(koshyk.toString().contains(&quot;@&quot;));</b>
+<b class="fc"><i>136</i>&nbsp;    }</b>
+<i>137</i>&nbsp;
+<i>138</i>&nbsp;    @Test
+<i>139</i>&nbsp;    public void testFindByType() {
+<b class="fc"><i>140</i>&nbsp;        ChemicalSupplyStore kuh = new ChemicalSupplyStore(&quot;kuh&quot;, &quot;kuiv&quot;, 5, &quot;9-11&quot;);</b>
+<b class="fc"><i>141</i>&nbsp;        AirFresheners air1 = new AirFresheners(&quot;Airic&quot;, 5.0, 4, &quot;Nice&quot;, 8.5);</b>
+<b class="fc"><i>142</i>&nbsp;        AirFresheners air2 = new AirFresheners(&quot;Pikka&quot;, 4.0, 5, &quot;Good&quot;, 8.5);</b>
+<b class="fc"><i>143</i>&nbsp;        kuh.addGoods(air1);</b>
+<b class="fc"><i>144</i>&nbsp;        kuh.addGoods(air2);</b>
+<i>145</i>&nbsp;        List&lt;Goods&gt; result1;
+<b class="fc"><i>146</i>&nbsp;        result1 = kuh.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.NONE);</b>
+<b class="fc"><i>147</i>&nbsp;        assertEquals(air1, result1.get(0), &quot;Price doesn&#39;t match&quot;);</b>
+<b class="fc"><i>148</i>&nbsp;    }</b>
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;    @Test
+<i>151</i>&nbsp;    public void testSortByPrice() {
+<b class="fc"><i>152</i>&nbsp;        ChemicalSupplyStore kuh = new ChemicalSupplyStore(&quot;fa&quot;, &quot;lviv&quot;, 5, &quot;9-15&quot;);</b>
+<b class="fc"><i>153</i>&nbsp;        AirFresheners air1 = new AirFresheners(&quot;Airic&quot;, 5.0, 4, &quot;Nice&quot;, 8.5);</b>
+<b class="fc"><i>154</i>&nbsp;        AirFresheners air2 = new AirFresheners(&quot;Pikka&quot;, 4.0, 5, &quot;Good&quot;, 8.5);</b>
+<b class="fc"><i>155</i>&nbsp;        kuh.addGoods(air1);</b>
+<b class="fc"><i>156</i>&nbsp;        kuh.addGoods(air2);</b>
+<i>157</i>&nbsp;        List&lt;Goods&gt; result1;
+<b class="fc"><i>158</i>&nbsp;        result1 = kuh.findByGroup(GoodsType.AIR_FRESHENERS, GoodsColour.BLACK);</b>
+<b class="fc"><i>159</i>&nbsp;        List&lt;Goods&gt; result2 = kuh.findByGroup(GoodsType.AIR_FRESHENERS,GoodsColour.BLACK);</b>
+<b class="fc"><i>160</i>&nbsp;        kuh.sortByPrice(result2);</b>
+<b class="fc"><i>161</i>&nbsp;        assertEquals(result1.get(0), result2.get(1), &quot;Price doesn&#39;t match&quot;);</b>
+<b class="fc"><i>162</i>&nbsp;    }</b>
+<i>163</i>&nbsp;
+<i>164</i>&nbsp;
+<i>165</i>&nbsp;    @AfterEach
+<i>166</i>&nbsp;    void tearDown() {
+<b class="fc"><i>167</i>&nbsp;        koshyk = null;</b>
+<b class="fc"><i>168</i>&nbsp;    }</b>
+<i>169</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-03-07 10:00</div>
+    <div style="float:right;">generated on 2018-03-15 14:20</div>
 </div>
 </body>
 </html>
