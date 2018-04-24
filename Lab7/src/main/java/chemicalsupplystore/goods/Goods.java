@@ -1,12 +1,12 @@
 package chemicalsupplystore.goods;
 
-public abstract class Goods {
+public class Goods {
 
     private String name;
     private double price;
     private int amount;
 
-    public Goods(final String name, final double price, final int amount) {
+    public Goods(final String name, final double price, final int amount, final ) {
         setName(name);
         setPrice(price);
         setAmount(amount);
@@ -22,10 +22,6 @@ public abstract class Goods {
     public String toCVS() {
         return getName() + "," + getPrice() + "," + getAmount() + "," + getGoodsType() + "," + getGoodsColour();
     }
-
-    public abstract GoodsType getGoodsType();
-
-    public abstract GoodsColour getGoodsColour();
 
     public String getName() {
         return name;
