@@ -1,6 +1,5 @@
 
 public class Main {
-
 	public static void main(String[] args) {
 		Helicopter mI1 = new Helicopter();
 		Helicopter kT112 = new Helicopter("UA", "KT-112", 250.0, 2000.2);

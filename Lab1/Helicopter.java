@@ -1,4 +1,3 @@
-
 public class Helicopter {
 private String country;
 private String model = "MI-1";
