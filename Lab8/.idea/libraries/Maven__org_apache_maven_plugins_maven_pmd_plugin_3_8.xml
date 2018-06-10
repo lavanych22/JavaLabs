@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-pmd-plugin/3.8/maven-pmd-plugin-3.8.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-pmd-plugin/3.8/maven-pmd-plugin-3.8-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-pmd-plugin/3.8/maven-pmd-plugin-3.8-sources.jar!/" />
     </SOURCES>

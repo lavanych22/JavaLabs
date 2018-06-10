@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/pmd/pmd-core/5.6.1/pmd-core-5.6.1.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/pmd/pmd-core/5.6.1/pmd-core-5.6.1-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/pmd/pmd-core/5.6.1/pmd-core-5.6.1-sources.jar!/" />
     </SOURCES>

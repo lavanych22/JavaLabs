@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.38/jsch-0.1.38.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.38/jsch-0.1.38-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/jcraft/jsch/0.1.38/jsch-0.1.38-sources.jar!/" />
     </SOURCES>

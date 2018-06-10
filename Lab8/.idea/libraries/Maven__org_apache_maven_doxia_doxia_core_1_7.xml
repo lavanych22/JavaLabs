@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/doxia/doxia-core/1.7/doxia-core-1.7.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/doxia/doxia-core/1.7/doxia-core-1.7-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/doxia/doxia-core/1.7/doxia-core-1.7-sources.jar!/" />
     </SOURCES>
